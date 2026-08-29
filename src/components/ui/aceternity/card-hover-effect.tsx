@@ -29,7 +29,7 @@ export const HoverEffect = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 block h-full w-full rounded-2xl bg-white/[0.06]"
+                className="absolute inset-0 block h-full w-full rounded-2xl bg-[var(--card)]"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.15 } }}
@@ -38,7 +38,7 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            {item.icon && <div className="mb-3 text-white/50">{item.icon}</div>}
+            {item.icon && <div className="mb-3 text-[var(--fg)]/50">{item.icon}</div>}
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
@@ -58,7 +58,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "relative z-20 h-full w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 backdrop-blur",
+        "relative z-20 h-full w-full overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--card)] p-4 backdrop-blur",
         className
       )}
     >
@@ -76,7 +76,7 @@ export const CardTitle = ({
   className?: string;
   children: React.ReactNode;
 }) => {
-  return <h4 className={cn("font-semibold tracking-tight text-white", className)}>{children}</h4>;
+  return <h4 className={cn("font-semibold tracking-tight text-[var(--fg)]", className)}>{children}</h4>;
 };
 
 export const CardDescription = ({
@@ -86,5 +86,5 @@ export const CardDescription = ({
   className?: string;
   children: React.ReactNode;
 }) => {
-  return <p className={cn("mt-2 text-sm leading-relaxed text-neutral-400", className)}>{children}</p>;
+  return <p className={cn("mt-2 text-sm leading-relaxed text-[var(--muted)]", className)}>{children}</p>;
 };

@@ -45,7 +45,7 @@ export function TiltCard({
       {glow && (
         <motion.div
           style={{ x: useTransform(mouseXSpring, [-0.5, 0.5], ["-8%", "8%"]), y: useTransform(mouseYSpring, [-0.5, 0.5], ["-8%", "8%"]) } as any}
-          className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover/bento:opacity-100"
+          className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-[var(--fg)]/10 to-transparent opacity-0 transition-opacity duration-300 group-hover/bento:opacity-100"
         />
       )}
       <div style={{ transform: "translateZ(24px)" } as any}>{children}</div>

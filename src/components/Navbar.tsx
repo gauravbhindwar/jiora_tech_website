@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV = [
   { name: "What We Build", link: "#build" },
@@ -53,41 +54,45 @@ export default function Navbar() {
         <div
           className={cn(
             "flex items-center gap-1 rounded-full border px-2 py-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] transition-all duration-300",
-            scrolled ? "border-white/[0.12] bg-black/70 backdrop-blur-xl" : "border-white/[0.08] bg-black/40 backdrop-blur-md"
+            scrolled ? "border-[var(--line)] bg-[var(--bg)]/70 backdrop-blur-xl" : "border-[var(--line)] bg-[var(--bg)]/40 backdrop-blur-md"
           )}
         >
           <a href="#top" className="flex items-center gap-2 pl-3 pr-2">
-            <span className="grid size-7 place-items-center rounded-full bg-[#C5A059] text-xs font-bold tracking-tight text-black">J</span>
-            <span className="font-display text-sm font-semibold tracking-tight text-white">JIORA</span>
+            <span className="grid size-7 place-items-center rounded-full bg-[#C5A059] text-xs font-bold tracking-tight text-[var(--bg)]">J</span>
+            <span className="font-display text-sm font-semibold tracking-tight text-[var(--fg)]">JIORA</span>
           </a>
-          <div className="mx-2 h-4 w-px bg-white/10" />
+          <div className="mx-2 h-4 w-px bg-[var(--card)]" />
           {NAV.map((item) => (
-            <a key={item.link} href={item.link} className="rounded-full px-3 py-1.5 text-sm font-medium text-neutral-300 transition-colors hover:bg-white/10 hover:text-white">
+            <a key={item.link} href={item.link} className="rounded-full px-3 py-1.5 text-sm font-medium text-[var(--muted)] transition-colors hover:bg-[var(--card)] hover:text-[var(--fg)]">
               {item.name}
             </a>
           ))}
           <a
             href="#contact"
-            className="ml-1 rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition hover:bg-neutral-100"
+            className="ml-1 rounded-full bg-[var(--fg)] px-5 py-2 text-sm font-semibold text-[var(--bg)] transition hover:opacity-90"
           >
             Contact
           </a>
+          <ThemeToggle className="ml-2" />
         </div>
       </motion.div>
 
       {/* Mobile */}
-      <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-white/[0.06] bg-black/80 px-4 py-3 backdrop-blur-xl md:hidden">
+      <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-[var(--line)] bg-[var(--bg)]/80 px-4 py-3 backdrop-blur-xl md:hidden">
         <a href="#top" className="flex items-center gap-2">
-          <span className="grid size-7 place-items-center rounded-full bg-[#C5A059] text-xs font-bold text-black">J</span>
-          <span className="font-display text-sm font-semibold text-white">JIORA</span>
+          <span className="grid size-7 place-items-center rounded-full bg-[#C5A059] text-xs font-bold text-[var(--bg)]">J</span>
+          <span className="font-display text-sm font-semibold text-[var(--fg)]">JIORA</span>
         </a>
-        <button
-          onClick={() => setMobileOpen((v) => !v)}
-          className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/5 text-white"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            className="grid size-9 place-items-center rounded-full border border-[var(--line)] bg-[var(--card)] text-[var(--fg)]"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -96,7 +101,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-0 top-[57px] z-40 bg-black/95 px-4 py-6 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 top-[57px] z-40 bg-[var(--bg)]/95 px-4 py-6 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col">
               {[...NAV, { name: "Contact", link: "#contact" }].map((item) => (
@@ -104,12 +109,15 @@ export default function Navbar() {
                   key={item.link}
                   href={item.link}
                   onClick={() => setMobileOpen(false)}
-                  className="border-b border-white/[0.06] py-4 text-lg font-medium text-white"
+                  className="border-b border-[var(--line)] py-4 text-lg font-medium text-[var(--fg)]"
                 >
                   {item.name}
                 </a>
               ))}
             </nav>
+            <div className="mt-6 flex justify-center">
+              <ThemeToggle />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

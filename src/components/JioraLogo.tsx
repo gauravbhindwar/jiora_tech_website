@@ -9,7 +9,7 @@ export function JioraLogo({ className = "h-7" }: { className?: string }) {
         <rect x="66" y="12" width="10" height="50" rx="1" fill="#C5A059" />
       </svg>
       <div className="flex flex-col leading-none">
-        <span className="font-display text-[15px] font-semibold tracking-[0.18em] text-white">
+        <span className="font-display text-[15px] font-semibold tracking-[0.18em] text-[var(--fg)]">
           JI<span className="font-light">O</span>RA
         </span>
         <span className="font-mono text-[7.5px] tracking-[0.28em] text-[#C5A059]">TECHNOLOGIES</span>

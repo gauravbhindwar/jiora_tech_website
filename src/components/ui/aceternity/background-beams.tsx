@@ -12,7 +12,7 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
   ];
 
   return (
-    <div className={cn("absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black", className)}>
+    <div className={cn("absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-[var(--bg)]", className)}>
       <svg className="pointer-events-none absolute z-0 h-full w-full opacity-30" width="1440" height="890" viewBox="0 0 1440 890" xmlns="http://www.w3.org/2000/svg">
         {paths.map((path, idx) => (
           <motion.path
@@ -23,15 +23,15 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
             strokeWidth="0.7"
             initial={{ pathLength: 0, pathOffset: 0 }}
             animate={{ pathLength: 1, pathOffset: 0 }}
-            transition={{ duration: Math.random() * 10 + 10, repeat: Infinity, repeatType: "loop", ease: "linear", delay: Math.random() * 5, repeatDelay: Math.random() * 5 + 5 }}
+            transition={{ duration: 12 + idx * 2.5, repeat: Infinity, repeatType: "loop", ease: "linear", delay: idx * 1.1, repeatDelay: 5 + idx * 1.5 }}
           />
         ))}
         <defs>
           {paths.map((_, idx) => (
             <linearGradient key={`grad-${idx}`} id={`linearGradient-${idx}`} x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#fff" stopOpacity="0" />
-              <stop offset="32.5%" stopColor="#fff" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+              <stop offset="0%" stopColor="var(--fg)" stopOpacity="0" />
+              <stop offset="32.5%" stopColor="var(--fg)" stopOpacity="0.18" />
+              <stop offset="100%" stopColor="var(--fg)" stopOpacity="0" />
             </linearGradient>
           ))}
         </defs>

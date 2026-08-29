@@ -8,7 +8,7 @@ export const GridBackground = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("relative flex w-full items-center justify-center bg-white dark:bg-black", className)}>
+    <div className={cn("relative flex w-full items-center justify-center bg-white dark:bg-[var(--bg)]", className)}>
       <div
         className={cn(
           "absolute inset-0",
@@ -17,7 +17,7 @@ export const GridBackground = ({
           "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
         )}
       />
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-[var(--bg)]" />
       {children}
     </div>
   );
@@ -31,7 +31,7 @@ export const DotBackground = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("relative flex w-full items-center justify-center bg-white dark:bg-black", className)}>
+    <div className={cn("relative flex w-full items-center justify-center bg-white dark:bg-[var(--bg)]", className)}>
       <div
         className={cn(
           "absolute inset-0",
@@ -40,7 +40,7 @@ export const DotBackground = ({
           "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
         )}
       />
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-[var(--bg)]" />
       {children}
     </div>
   );
